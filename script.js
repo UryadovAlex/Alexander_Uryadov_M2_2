@@ -100,7 +100,6 @@ class Application {
 
     drawTable() {
         const container = document.getElementById('table');
-
         if (this.resultArray.length !== 0) {
 
             const arr = [];
@@ -119,6 +118,7 @@ class Application {
             container.innerHTML = '<p>Нет подходящих вариантов</p>';
         }
     }
+
     getRow(bankName, investName, incomeType, fv) {
         const namePart = '<td>'+bankName+'</td>' ;
         const investPart = '<td>'+investName+'</td>' ;
