@@ -1,0 +1,62 @@
+.main {
+    font-family: 'Roboto', sans-serif;
+    width: 800px;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+}
+
+.calc {
+    width: 500px;
+    border: 1px solid #7ba2a2;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.calc .input{
+    overflow: hidden;
+    padding: 5px 10px;
+}
+
+input {
+    float: right;
+}
+
+.btn {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    background-color: #204051;
+}
+
+table {
+    width: 90%;
+    border: 1px solid #7ba2a2;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+tr {
+    border: 1px solid #7ba2a2;
+}
+
+th {
+    background-color: #cae8d5;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+p {
+    text-align: center;
+}
+
