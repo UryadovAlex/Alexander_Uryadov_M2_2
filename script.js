@@ -38,28 +38,28 @@ class Calculator {
     }
 
     filter(deposit) {
-       let byCurrency = this.bankProducts.filter( bank => bank.currency === deposit.currency);
-       let bySumMin = byCurrency.filter( bank => bank.sumMin <= deposit.initialAmount);
-       let bySumMax = bySumMin.filter( bank => (bank.sumMax == null) ? true : bank.sumMax >= deposit.initialAmount);
-       let byTermMin = bySumMax.filter( bank => bank.termMin <= deposit.period);
-       let byTermMax = byTermMin.filter( bank => bank.termMax >= deposit.period);
+        let filtered = this.bankProducts.filter( bank => bank.currency === deposit.currency)
+            .filter( bank => bank.sumMin <= deposit.initialAmount)
+            .filter( bank => (bank.sumMax == null) ? true : bank.sumMax >= deposit.initialAmount)
+            .filter( bank => bank.termMin <= deposit.period)
+            .filter( bank => bank.termMax >= deposit.period);
 
-       let canFill = [];
-       if(deposit.monthlyFill > 0) {
-            canFill = byTermMax.filter( bank => bank.canDeposit );
-       }
+        let canFill = [];
+        if(deposit.monthlyFill > 0) {
+            canFill = filtered.filter( bank => bank.canDeposit );
+        }
 
-       let sortByPercent;
-       if (canFill.length === 0){
-           sortByPercent = byTermMax.sort((a, b) => a.incomeType - b.incomeType);
-       } else {
-           sortByPercent = canFill.sort((a, b) => a.incomeType - b.incomeType);
-       }
-       if (sortByPercent.length === 0){
-           return [];
-       }
-       let maxPercent = sortByPercent[sortByPercent.length - 1].incomeType;
-       return sortByPercent.filter( bank => bank.incomeType === maxPercent);
+        let sortByPercent;
+        if (canFill.length === 0){
+            sortByPercent = filtered.sort((a, b) => a.incomeType - b.incomeType);
+        } else {
+            sortByPercent = canFill.sort((a, b) => a.incomeType - b.incomeType);
+        }
+        if (sortByPercent.length === 0){
+            return [];
+        }
+        let maxPercent = sortByPercent[sortByPercent.length - 1].incomeType;
+        return sortByPercent.filter( bank => bank.incomeType === maxPercent);
     }
 
     calculate(deposit) {
